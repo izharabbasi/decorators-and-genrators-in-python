@@ -1,17 +1,21 @@
 def deco_func(any_func):
-    def wrp():
+    def wrp(*args, **kwargs):
         print("this is awesome")
-        any_func()
+        return any_func(*args, **kwargs)
     return wrp
 
 
 @deco_func
-def func1():
-    print("this is function 1 ")
+def func1(a):
+    print(f"this is function 1 {a}")
 
 
-func1()
+func1(2)
 
 
-def func2():
-    print("this is function 2 ")
+@deco_func
+def func2(a, b):
+    return a+b
+
+
+print(func2(2, 3))
